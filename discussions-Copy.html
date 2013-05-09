@@ -1,0 +1,163 @@
+<script>
+$('.topic_link').click(function() {
+	//alert('test');
+	$('#forum_content').hide();
+	
+	//get the sub page content
+	$.get('subpages/view_a_topic.html', function(data) {
+				$('#topic_content').html(data);
+				//alert(data);
+			},"html");
+	
+	$('#topic_content').show();
+});
+</script>
+
+<div class="page-header">
+          <h1>Discussion Board <small>Supporting text or tagline</small>
+          <p class="pull-right">
+    <input id="keyword" class="large" type="text" size="30" name="keyword"> 
+    <a class="btn primary" href="#" id="searchbtn">Search</a>
+</p>  
+          </h1>
+          
+  
+        </div>
+        
+<div class="row" id="forum_content">        
+ 	<div class="span11" id="topic_list">
+		<h3>Recent topics</h3>
+        
+        <table>
+        	<tr>
+            	<td>
+                <p>
+                <a href="#" class="topic_link">Fatal collision at Woodville</a>
+                </p>
+                
+                <div class="row" >
+                	<div class="span10">
+                    	Thang  5 11 2011 12:18
+                	</div>
+                    
+                    <div class="span6">
+                    	Jaksha  Yesterday, 05:07
+                    </div>
+                </div>
+                </td>
+            </tr>
+            
+            <tr>
+            	<td>
+                <p>
+                <a href="#" class="topic_link">The discussion on Collision cases is really cool !</a>
+                </p>
+                
+                <div class="row" >
+                	<div class="span10">
+                    	Paul  4 Aug 2011 12:18
+                	</div>
+                    
+                    <div class="span6">
+                    	Paula  Yesterday, 05:07
+                    </div>
+                </div>
+                </td>
+            </tr>
+            
+            <tr>
+            	<td>
+                <p>
+                <a href="#" class="topic_link">New Collision awareness team formed</a>
+                </p>
+                
+                <div class="row" >
+                	<div class="span10">
+                    	Thang  5 11 2011 12:18
+                	</div>
+                    
+                    <div class="span6">
+                    	Jaksha  Yesterday, 05:07
+                    </div>
+                </div>
+                </td>
+            </tr>
+            
+            
+            <tr>
+            	<td>
+                <p>
+                <a href="#" class="topic_link">Collision at Woodville North</a>
+                </p>
+                
+                <div class="row" >
+                	<div class="span10">
+                    	Thang  5 11 2011 12:18
+                	</div>
+                    
+                    <div class="span6">
+                    	Jaksha  Yesterday, 05:07
+                    </div>
+                </div>
+                </td>
+            </tr>
+            
+            <tr>
+            	<td>
+                <p>
+                <a href="#" class="topic_link">Suspicious death in Mount Gambier Collision</a>
+                </p>
+                
+                <div class="row" >
+                	<div class="span10">
+                    	Thang  2 11 2011 12:18
+                	</div>
+                    
+                    <div class="span6">
+                    	John  4 11 2011, 05:07
+                    </div>
+                </div>
+                </td>
+            </tr>
+         </table>   
+	</div>
+    
+	<div class="span5" id="forum_list">
+    	<h3>Main Forums</h3>
+        
+        <table>
+        	<tr>
+            	<th>
+                <a href="#">News & Announcements</a>
+                </th>
+            </tr>
+            
+            <tr>
+            	<td>
+                <p>Topics: 221 | Replies: 1,202</p>
+                Most important news, updates and other fresh stuff from SA Police
+                </td>
+            </tr>
+        </table>
+        
+        
+        <table>
+        	<tr>
+            	<th>
+                <a href="#">Suggestions</a>
+                </th>
+            </tr>
+            
+            <tr>
+            	<td>
+                <p>Topics: 89 | Replies: 489</p>
+                Would like to suggest a new or improve the existing feature, tell us about it here.
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div id="topic_content" style="display:none;">
+	
+</div>

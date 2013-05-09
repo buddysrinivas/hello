@@ -1,0 +1,259 @@
+<script>
+var i = 4;
+var state = 0;//hidden
+var contents=new Array();
+
+$('#journal_footer #addbtn').click(function() {
+	i++;
+	$('#journals_table tr:last').after('<tr>'
+            +'<td>'+i+'</td>'
+			 +'<td>SA</td>'
+            +'<td>'+$('#add_journal_form #city').val()+'</td>'
+            +'<td>'+$('#add_journal_form #code').val()+'</td>'
+            +'<td><a href="#" class="journal_link" id="'+i+'">'+$('#add_journal_form #title').val()+'</a></td>'
+         + '</tr>');
+	contents[i] = 	 $('#add_journal_form #content').val();
+	//clear all the fields
+	$('#add_journal_form #code').val("");
+	$('#add_journal_form #city').val("");
+	$('#add_journal_form #title').val("")	;
+	$('#add_journal_form #content').val("");
+	$("#add_journal_form").modal('hide');
+});
+
+$('#journal_footer #cancelbtn').click(function() {
+	$("#add_journal_form").modal('hide');
+});
+
+$('.journal_link').click(function() {
+	//alert('test');
+	$('#list_journal').hide();
+	
+	//get the sub page content
+	$.get('subpages/view_a_journal.html', function(data) {
+				$('#journal_content').html(data);
+				//alert(data);
+			},"html");
+	
+	$('#journal_content').show();
+});
+
+$('#search_journal_link').click(function() {
+	if (state == 0){
+		//currently hidden
+		//show the form now
+		
+		$('#search_form').show();
+		$('#search_link').html("&uarr;Search Journals");
+	}else{
+		$('#search_form').hide();
+		$('#search_link').html("&darr;Search Journals");
+	}
+	state = 1-state;
+});
+
+$('#search_journal_btn').click(function() {
+	if ($('#keyword').val() != ''){
+		$('#default_results').hide();
+		$('#search_results').show();
+	}else{
+		//alert('are we here
+		$('#search_results').hide();
+		$('#default_results').show();
+	}
+});
+
+
+</script>
+
+<div class="page-header">
+          <h1>Journal <small>Supporting text or tagline</small>
+          <p class="pull-right">
+    
+</p>  
+          </h1>
+          
+  
+        </div>
+        
+ <div id="list_journal">       
+ <h4>
+ <a href="#" id="search_journal_link">&darr;Search Journals</a>
+ </h3>
+ <div id="search_form" class="hide">     
+<form>
+	<fieldset>
+    	
+<div class="clearfix">
+                        <label for="title">State</label>
+                        
+                        <div class="input">
+                            <select id="mediumSelect" class="medium" name="mediumSelect">
+                            <option>SA</option>
+                            <option>ACT</option>
+                            <option>NSW</option>
+                            <option>NT</option>
+                            <option>TAS</option>
+                            <option>VIC</option>
+                            <option>WA</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="clearfix">
+                        <label for="title">City</label>
+                        <div class="input">
+                        <input id="city" class="large" type="text" size="30" name="city">
+                        </div>
+                    </div>
+                    
+                    <div class="clearfix">
+                        <label for="title">Code</label>
+                        <div class="input">
+                        <input id="city" class="large" type="text" size="30" name="city">
+                        </div>
+                    </div>
+                    
+                    <div class="clearfix">
+                        <label for="title">Keyword</label>
+                        <div class="input">
+                        <input id="keyword" class="large" type="text" size="30" name="keyword">
+                        </div>
+                    </div>
+                    
+                    <div class="clearfix">
+                    	<label>Date range</label>
+                    	<div class="input">
+                            <div class="inline-inputs">
+                                <input id="acpro_inp15" class="small" type="text" value="May 1, 2011">
+                                <input id="acpro_inp16" class="mini" type="text" value="12:00am">
+                                to
+                                <input id="acpro_inp17" class="small" type="text" value="May 8, 2011">
+                                <input id="acpro_inp18" class="mini" type="text" value="11:59pm">
+                                <span class="help-block">All times are shown as Australian Central Daylight Time (GMT +09:30).</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                    	<div class="input">
+                    		<a class="btn primary" href="#" id="search_journal_btn">Search</a>
+                        </div>
+                    </div>    
+
+    </fieldset>
+</form>
+</div>
+
+<p>
+<button class="btn danger" data-keyboard="true" data-backdrop="true" data-controls-modal="add_journal_form">Add new journal</button>
+</p>
+
+
+	<table id="journals_table" class="zebra-striped">
+        <thead>
+          <tr>
+            <th class="header">#</th>
+            <th class="yellow header headerSortDown">State</th>
+            <th class="blue header">City</th>
+            <th class="green header">Code</th>
+            <th class="green header">Document Title</th>
+          </tr>
+        </thead>
+        <tbody> 
+          
+        <tr>
+            <td>1</td>
+            <td>SA</td>
+            <td>West Adelaide</td>
+            <td>001</td>
+            <td><a href="#" class="journal_link">Suspicious theft in West Adelaide</a></td>
+          </tr>
+          
+        <tr>
+            <td>2</td>
+            <td>SA</td>
+            <td>West Adelaide</td>
+            <td>002</td>
+            <td><a href="#" class="journal_link">West Adelaide theft incident update</a></td>
+          </tr>  
+          
+        <tr>
+            <td>3</td>
+            <td>SA</td>
+            <td>West Adelaide</td>
+            <td>003</td>
+            <td><a href="#" class="journal_link">Attempt theft at West Adelaide</a></td>
+          </tr>
+          
+         <tr>
+            <td>4</td>
+            <td>SA</td>
+            <td>West Adelaide</td>
+            <td>004</td>
+            <td><a href="#" class="journal_link">Theft recovery at West Adelaide</a></td>
+          </tr>   
+
+		  <tr>
+            <td>5</td>
+            <td>SA</td>
+            <td>West Adelaide</td>
+            <td>005</td>
+            <td><a href="#" class="journal_link">Theft at West Adelaide</a></td>
+          </tr>   
+      </tbody>
+</table>
+    
+
+<div id="add_journal_form" class="modal hide fade">
+        <div class="modal-header">
+        <a class="close" href="#">×</a>
+        
+        
+        </div>
+        <div class="modal-body">
+        	<!-- The form goes here -->
+            <form>
+				<fieldset>
+                	<legend>Add new journal</legend>
+                    
+                    <div class="clearfix">
+                        <label for="title">City</label>
+                        <div class="input">
+                        <input id="city" class="xlarge" type="text" size="30" name="code">
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                        <label for="title">Code</label>
+                        <div class="input">
+                        <input id="code" class="xlarge" type="text" size="30" name="code">
+                        </div>
+                    </div>
+                    
+                    <div class="clearfix">
+                        <label for="title">Title</label>
+                        <div class="input">
+                        <input id="title" class="xlarge" type="text" size="30" name="title">
+                        </div>
+                    </div>
+                    
+                    <div class="clearfix">
+                        <label for="content">Journal content</label>
+                        <div class="input">
+                        <textarea id="content" class="xlarge" rows="7" name="content"></textarea>
+                        <span class="help-block"> Describe your idea here </span>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>        
+        </div>
+        
+        <div class="modal-footer" id="journal_footer">
+        <a class="btn primary" href="#" id="addbtn">Add</a>
+        <a class="btn secondary" href="#" id="cancelbtn">Cancel</a>
+        </div>
+</div>
+</div>
+    
+ <div id="journal_content" class="hide">
+ 	
+ </div>   

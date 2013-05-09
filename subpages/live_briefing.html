@@ -1,0 +1,82 @@
+<script>
+jQuery(document).ready( function($) {
+	//alert($('#add_briefing #title').val()+ " hehe");
+	$('#briefing_title').html($('#add_briefing #title').val());
+});
+
+
+$('#view_briefing_back').click(function() {
+	$('#briefing_content').show();
+	$('#live_briefing').hide();
+	
+});
+
+$('#chat_form #sendbtn').click(function() {
+	//get current date and time
+	var currentTime = new Date();
+	var hours = currentTime.getHours();
+	var minutes = currentTime.getMinutes();
+	var seconds = currentTime.getSeconds();
+	
+	if (minutes < 10){
+		minutes = "0" + minutes
+	}
+	if (seconds < 10){
+		minutes = "0" + minutes
+	}
+	var time = hours + ":" + minutes + ":" + seconds+" ";
+	if (hours > 11) time = time +"PM";
+	else time = time +"AM";
+	
+	var names = new Array('Thang','Jaksha','Srini','Paul','Murli');
+	var randomnumber=Math.floor(Math.random()*5);
+	
+	$('#chat_content').after('['+time+'] '+names[randomnumber]+": "+$('#chat_form #discussion_content').val() +'<br/>');
+	$('#chat_form #discussion_content').val("");
+});	
+</script>
+<p><a href="#" id="view_briefing_back">Go back</a></p>
+<div class="row" id="briefing_content">
+	<div class="span4" id="briefing_speaker">
+    	<h3>Current speaker</h3>
+        	<table class="bordered-table">
+              <tr>
+                <td><img src="images/paul.jpg" width="160"/></td>
+              </tr>
+            </table>
+        <h3>Discussion</h3>
+        <table class="bordered-table">
+              <tr>
+                <td id="chat_content"></td>
+              </tr>
+        </table>
+        
+        <form id="chat_form">
+                	<input id="discussion_content" class="span3" type="text" size="30" name="discussion_content"> 
+                    <a class="btn small primary" href="#" id="sendbtn">Send</a>
+        </form>    
+    </div> 
+    
+    <div class="span9" id="briefing_main_content">
+    	<h2><div id="briefing_title">Test content</div></h2>
+        
+        <p><img src="images/briefing_screenshot.png" width="530"/></p>
+    </div> 
+    
+    <div class="span3" id="briefing_user_list">
+    	<h3>Attendees</h3>
+    	<table width="100%" class="bordered-table">
+              <tr>
+                <td>
+                	<ul>
+                    	<li>Thang</li>
+                        <li>Jaksha</li>
+                        <li>Thang</li>
+                        <li>Srini</li>
+                        <li>Murli</li>
+                    </ul>
+                </td>
+              </tr>
+            </table>
+    </div> 
+</div>

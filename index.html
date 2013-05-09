@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SAPOL - Knowledge Management Prototype</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script>$(function () { prettyPrint() })</script>
+    <script src="js/bootstrap-modal.js"></script>
+    <script src="js/bootstrap-alerts.js"></script>
+
+    <script src="js/bootstrap-twipsy.js"></script>
+    <script src="js/bootstrap-popover.js"></script>
+    <script src="js/bootstrap-dropdown.js"></script>
+    <script src="js/bootstrap-scrollspy.js"></script>
+    <script src="js/bootstrap-tabs.js"></script>
+    <script src="js/bootstrap-buttons.js"></script>
+    <script src="js/jquery/jquery.tablesorter.min.js"></script>
+
+    <script>
+		jQuery(document).ready( function($) {
+			
+			
+			//$('.nav').tabs();
+			//load the HTML content now
+			$.get('home.html', function(data) {
+				$('#home').html(data);
+				//alert(data);
+			},"html");
+			
+			$.get('team_briefing.html', function(data) {
+				$('#briefing').html(data);
+				//alert(data);
+			},"html");
+			
+			$.get('bright_ideas.html', function(data) {
+				$('#idea').html(data);
+				$("table#ideas_table").tablesorter({ sortList: [[1,0]] });
+				//alert(data);
+			},"html");
+			
+			$.get('bright_ideas_assessment.html', function(data) {
+				$('#idea_assessment').html(data);
+				$("table#ideas_assessment_table").tablesorter({ sortList: [[1,0]] });
+				//alert(data);
+			},"html");
+			
+			//bright_ideas_assessment.html
+			
+			$.get('discussions.html', function(data) {
+				$('#discussion').html(data);
+				//alert(data);
+			},"html");
+			
+			$.get('journal.html', function(data) {
+				$('#journal').html(data);
+				//alert(data);
+			},"html");
+	
+			
+			$.get('reportcenter.html', function(data) {
+				$('#reportcenter').html(data);
+				//alert(data);
+			},"html");
+			
+			$.get('analytics.html', function(data) {
+				$('#analytics').html(data);
+				//alert(data);
+			},"html");
+			
+			/*$.get('home.html', function(data) {
+				$('#home').html(data);
+			});*/
+		})
+	</script>
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  </head>
+
+  <body>
+
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <a class="brand" href="#">SAPOL Knowledge Management</a>
+          <ul class="nav" data-tabs="tabs" >
+            <li class="active"><a href="#home">Home</a></li>
+            <li><a href="#briefing">Team Briefing</a></li>
+            <li class="dropdown" data-dropdown="dropdown">
+            	<a class="dropdown-toggle" href="#idea">Bright Ideas</a>
+                <ul class="dropdown-menu">
+                    <li>
+                    <a href="#idea">My ideas</a>
+                    </li>
+                    <li>
+                    <a href="#idea_assessment">Ideas assessment</a>
+                    </li>
+                    
+                    <li class="divider"></li>
+                </ul>
+            </li>
+            
+            <li><a href="#journal">Journals</a></li>
+            <li><a href="#discussion">Discussions</a></li>
+             <li><a href="#reportcenter">Report Center</a></li>
+          </ul>
+          <!--<p class="pull-right">Logged in as <a href="#">username</a></p>-->
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    <div class="container">
+    <div id="my-tab-content" class="tab-content">
+    	<div id="home" class="active tab-pane"> </div>
+        <div id="briefing" class="tab-pane">Team Briefing</div>
+        <div id="idea" class="tab-pane">Idea</div>
+        <div id="journal" class="tab-pane">Journals</div>
+        <div id="discussion" class="tab-pane">Discussions</div>
+        <div id="report_center" class="tab-pane">Report center</div>
+        <div id="analytics" class="tab-pane">Analytics</div>
+        <div id="idea_assessment" class="tab-pane">Assessment</div>
+        <div id="reportcenter" class="tab-pane">Report Center</div>
+
+	</div>
+    	
+    <footer>
+        <p>&copy; SA Police 2011</p>
+      </footer>
+
+
+    </div> <!-- /container -->
+
+  </body>
+</html>

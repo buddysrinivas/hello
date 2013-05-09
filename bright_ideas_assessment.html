@@ -1,0 +1,63 @@
+<script>
+var i = 1;
+jQuery(document).ready( function($) {
+	
+})
+
+$('#assessment_link').click(function() {
+	$("#idea_listing").hide();
+	$("#idea_assessment_progress").show();
+});
+
+</script>
+	<h1>Bright Ideas</h1>
+    <div id="idea_listing">
+    <table id="ideas_assessment_table" class="zebra-striped">
+        <thead>
+          <tr>
+            <th class="header">#</th>
+            <th class="yellow header headerSortDown">Submitted by</th>
+            <th class="blue header">Idea title</th>
+            <th class="green header">Description</th>
+            <th class="green header">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          
+          
+        <tr>
+            <td>1</td>
+            <td>Paul</td>
+            <td>My super idea</td>
+            <td>This idea can change the world</td>
+            <td><a href="#" id="assessment_link">Under assessment</a></td>
+          </tr></tbody>
+      </table>
+    </div> 
+    
+    <div id="idea_assessment_progress" class="hide">
+    	<div class="row" >
+        	<div class="span10" id="idea_details">
+            	<h2>Idea details</h2>
+                <table>
+                  <tr>
+                    <td>Idea title: </td>
+                    <td>My super idea</td>
+                  </tr>
+                  <tr>
+                    <td>Submitter: </td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</t	d>
+                    <td>&nbsp;</td>
+                  </tr>
+                </table>
+            </div>
+            
+            <div class="span6" id="">
+            	
+            </div>
+        </div>
+    </div> 

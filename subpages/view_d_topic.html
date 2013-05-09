@@ -1,0 +1,247 @@
+<script>
+var i = 4;
+var state = 0;//hidden
+var contents=new Array();
+
+$('#reportcenter11_footer #addbtn').click(function() {
+	i++;
+	$('#reportcenter1_table tr:last').after('<tr>'
+            +'<td>'+i+'</td>'
+			 +'<td>SA</td>'
+            +'<td>'+$('#add_reportcenter11_form #city').val()+'</td>'
+            +'<td>'+$('#add_reportcenter11_form #code').val()+'</td>'
+            +'<td><a href="#" class="reportcenter11_link" id="'+i+'">'+$('#add_reportcenter11_form #title').val()+'</a></td>'
+         + '</tr>');
+	contents[i] = 	 $('#add_reportcenter11_form #content').val();
+	//clear all the fields
+	$('#add_reportcenter11_form #code').val("");
+	$('#add_reportcenter11_form #city').val("");
+	$('#add_reportcenter11_form #title').val("")	;
+	$('#add_reportcenter11_form #content').val("");
+	$("#add_reportcenter11_form").modal('hide');
+});
+
+$('#reportcenter11_footer #cancelbtn').click(function() {
+	$("#add_reportcenter11_form").modal('hide');
+});
+
+$('.reportcenter11_link').click(function() {
+	//alert('test');
+	$('#list_reportcenter11').hide();
+	
+	//get the sub page content
+	$.get('subpages/view_a_reportcenter11.html', function(data) {
+				$('#reportcenter11_content').html(data);
+				//alert(data);
+			},"html");
+	
+	$('#reportcenter11_content').show();
+});
+
+$('#search_link').click(function() {
+	if (state == 0){
+		//currently hidden
+		//show the form now
+		
+		$('#search_form').show();
+		$('#search_link').html("&uarr;Search reportcenter1");
+	}else{
+		$('#search_form').hide();
+		$('#search_link').html("&darr;Search reportcenter1");
+	}
+	state = 1-state;
+});
+
+$('#search_reportcenter11_btn').click(function() {
+	if ($('#keyword').val() != ''){
+		$('#default_results').hide();
+		$('#search_results').show();
+	}else{
+		//alert('are we here
+		$('#search_results').hide();
+		$('#default_results').show();
+	}
+});
+
+$('#view_report_back').click(function() {
+	$('#list_reportcenter').show();
+	$('#reportcenter_content1').hide();
+});
+
+
+</script>
+
+<p><a href="#" id="view_report_back">Go back</a></p>
+<form>
+	<fieldset>
+    	
+<div class="clearfix">
+                        <label for="title">Category</label>
+                        
+                        <div class="input">
+                            <select id="mediumSelect" class="medium" name="mediumSelect">
+                            <option>Traffic</option>
+                            <option>Murder</option>
+                            <option>Robbery</option>
+                            <option>Assault</option>
+                            <option>Harassment</option>
+                            <option>Public Nuisance</option>
+                            <option>Theft</option>                            </select>
+                        </div>
+        </div>
+<div class="clearfix">
+                        <label for="title">Sub - Category</label>
+                        
+                        <div class="input">
+                            <select id="mediumSelect" class="medium" name="mediumSelect">
+                            <option>All</option>
+                            <option>Car Theft</option>
+                            <option>Personal Property Theft</option>
+                            <option>Bike Theft</option>
+                            <option>Other automobile theft</option>
+                            </select>
+                        </div>
+        </div>        
+                    
+                    <div class="clearfix">
+                        <label for="title">City</label>
+                        <div class="input">
+                        <input id="city" class="large" type="text" size="30" name="city">
+                        </div>
+                    </div>
+                    
+                                    
+                   <div class="clearfix">
+                    	<label>Date range</label>
+                    	<div class="input">
+                            <div class="inline-inputs">
+                                <input id="acpro_inp15" class="small" type="text" value="May 1, 2011">
+                                <input id="acpro_inp16" class="mini" type="text" value="12:00am">
+                                to
+                                <input id="acpro_inp17" class="small" type="text" value="May 8, 2011">
+                                <input id="acpro_inp18" class="mini" type="text" value="11:59pm">
+                                <span class="help-block">All times are shown as Australian Central Daylight Time (GMT +09:30).</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                    	<div class="input">
+                    		<a class="btn primary" href="#" id="search_reportcenter11_btn">Search</a>
+                        </div>
+                    </div>    
+
+    </fieldset>
+</form>
+</div>
+
+<p>
+
+</p>
+
+
+	<table id="reportcenter1_table" class="zebra-striped">
+        <thead>
+          <tr>
+            <th class="header">#</th>
+            <th class="yellow header headerSortDown">State</th>
+            <th class="blue header">City</th>
+            <th class="green header">Category</th>
+            <th class="green header">Date</th>
+            <th class="green header">Document Title</th>
+          </tr>
+        </thead>
+        <tbody> 
+          
+        <tr>
+            <td>1</td>
+            <td>SA</td>
+            <td>West Adelaide</td>
+            <td>Personal Theft</td>
+            <td>01/05/2011</td>            
+            <td><a href ="subpages/filename.pdf" class="reportcenter11_link">View Graph</a></td>
+            
+          </tr>
+          
+        <tr>
+            <td>2</td>
+            <td>SA</td>
+            <td>West Adelaide</td>
+            <td>Car Theft</td>
+            <td>02/05/2011</td>            
+            <td><a href="subpages/PDFOnline.pdf" class="reportcenter11_link">View Graph</a></td>
+          </tr>  
+          
+        <tr>
+            <td>3</td>
+            <td>SA</td>
+            <td>Blair Athol</td>
+            <td>Bike Theft</td>
+            <td>03/05/2011</td>            
+            <td><a href="#" class="reportcenter11_link">View Graph</a></td>
+          </tr>
+          
+         <tr>
+            <td>4</td>
+            <td>SA</td>
+            <td>Gawler</td>
+            <td>Other automobile Theft</td>
+            <td>04/05/2011</td>            
+            <td><a href="#" class="reportcenter11_link">View Graph</a></td>
+          </tr>   
+      </tbody>
+</table>
+    
+
+<div id="add_reportcenter11_form" class="modal hide fade">
+        <div class="modal-header">
+        <a class="close" href="#">×</a>
+        
+        
+        </div>
+        <div class="modal-body">
+        	<!-- The form goes here -->
+            <form>
+				<fieldset>
+                	<legend>Add new Entry</legend>
+                    
+                    <div class="clearfix">
+                        <label for="title">City</label>
+                        <div class="input">
+                        <input id="city" class="xlarge" type="text" size="30" name="code">
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                        <label for="title">Code</label>
+                        <div class="input">
+                        <input id="code" class="xlarge" type="text" size="30" name="code">
+                        </div>
+                    </div>
+                    
+                    <div class="clearfix">
+                        <label for="title">Title</label>
+                        <div class="input">
+                        <input id="title" class="xlarge" type="text" size="30" name="title">
+                        </div>
+                    </div>
+                    
+                    <div class="clearfix">
+                        <label for="content">Report content</label>
+                        <div class="input">
+                        <textarea id="content" class="xlarge" rows="7" name="content"></textarea>
+                        <span class="help-block"> Describe your idea here </span>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>        
+        </div>
+        
+        <div class="modal-footer" id="reportcenter11_footer">
+        <a class="btn primary" href="#" id="addbtn">Add</a>
+        <a class="btn secondary" href="#" id="cancelbtn">Cancel</a>
+        </div>
+</div>
+</div>
+    
+<div id="reportcenter11_content" class="hide">
+ 	
+ </div>   

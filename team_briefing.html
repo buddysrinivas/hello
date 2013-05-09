@@ -1,0 +1,186 @@
+<script>
+$('#searchbtn').click(function() {
+	if ($('#keyword').val() != ''){
+		$('#default_results').hide();
+		$('#search_results').show();
+	}else{
+		//alert('are we here
+		$('#search_results').hide();
+		$('#default_results').show();
+	}
+});
+
+$('.video_link').click(function() {
+	$('#search_results').hide();
+	$('#default_results').hide();
+	
+	//get the sub page content
+	$.get('subpages/view_a_video.html', function(data) {
+				$('#view_video').html(data);
+				//alert(data);
+			},"html");
+	
+	$('#view_video').show();
+});
+
+$('#add_briefing #addbtn').click(function() {
+	$("#add_briefing").modal('hide');
+	$('#briefing_content').hide();
+	
+	$.get('subpages/live_briefing.html', function(data) {
+				$('#live_briefing').html(data);
+				//alert(data);
+			},"html");
+	$('#live_briefing').show();
+	
+});
+
+$('#add_briefing #cancelbtn').click(function() {
+	$("#add_briefing").modal('hide');
+});
+</script>
+
+    <div class="page-header">
+          <h1>Team Briefing <small>Supporting text or tagline</small>
+          <p class="pull-right">
+    <input id="keyword" class="large" type="text" size="30" name="keyword"> 
+    <a class="btn primary" href="#" id="searchbtn">Search</a>
+</p>  
+          </h1>
+          
+  
+        </div>
+    
+ <div class="row" id="briefing_content">        
+ 	<div class="span4">
+		<ul>
+            <li><a href="#">Adelaide Station</a></li>
+            <li><a href="#">Hindley Station</a></li>
+            <li><a href="#">Marion Station</a></li>
+            <li><a href="#">Charles Sturt Station</a></li>
+        </ul>
+	</div>
+    
+	<div class="span12" id="default_results">
+    	<button class="btn danger" data-keyboard="true" data-backdrop="true" data-controls-modal="add_briefing">Create new team briefing</button>
+    
+    <div id="add_briefing" class="modal hide fade">
+        <div class="modal-header">
+        <a class="close" href="#">×</a>
+        
+        
+        </div>
+        <div class="modal-body">
+        	<!-- The form goes here -->
+            <form>
+				<fieldset>
+                	<legend>Create new team briefing</legend>
+                    <div class="clearfix">
+                        <label for="title">Title</label>
+                        <div class="input">
+                        <input id="title" class="xlarge" type="text" size="30" name="title">
+                        </div>
+                    </div>
+                </fieldset>
+            </form>        
+        </div>
+        
+        <div class="modal-footer">
+        <a class="btn primary" href="#" id="addbtn">Add</a>
+        <a class="btn secondary" href="#" id="cancelbtn">Cancel</a>
+        </div>
+	</div>
+        
+    <ul class="breadcrumb">
+    <li><a href="#">Home</a> <span class="divider">/</span></li>
+    <li><a href="#" class="goback">Team Briefing</a> <span class="divider">/</span></li>
+    <li class="active">Adelaide Station</li>
+  </ul>
+    	
+        
+        <div class="row">
+            <div class="span3">
+            	<a href="#">
+					<img class="thumbnail" src="images/thumb1.jpg" alt="">
+				</a>
+            </div>
+            
+            <div class="span9">
+           		<a href="#" class="video_link">Friday, 21 October 2011 at 4:35:00 PM</a><br/>
+                Team Briefing about the sexual assault incident after Adelaide truck collision
+                <span class="label notice">2h 40m 55s
+Recorded on 10/22/2011 </span>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="span3">
+            	<a href="#">
+					<img class="thumbnail" src="images/thumb2.jpg" alt="">
+				</a>
+            </div>
+            
+            <div class="span9">
+           		<a href="#" class="video_link">Tuesday, 18 October 2011 at 8:46:12 AM</a><br/>
+                Deputy Comissioner Gary Burns speaks about the collision at Hectorville on 29 April 2011
+                <span class="label notice">3h 04m 23s
+Recorded on 10/18/2011 </span>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="span3">
+            	<a href="#">
+					<img class="thumbnail" src="images/thumb3.jpg" alt="">
+				</a>
+            </div>
+            
+            <div class="span9">
+           		<a href="#" class="video_link">Friday, 7 October 2011 at 11:13:02 AM</a><br/>
+                Chief Inspector Kym Zander speaks to the media about the Porsche collision in Woodville Park today.
+                <span class="label notice">2h 56m 12s
+Recorded on 10/7/2011</span>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="span3">
+            	<a href="#">
+					<img class="thumbnail" src="images/thumb4.jpg" alt="">
+				</a>
+            </div>
+            
+            <div class="span9">
+           		<a href="#" class="video_link">Friday, 7 October 2011 at 11:13:02 AM</a><br/>
+                Police are hoping you can help by identifying this speed violater and calling BankSA Crimestoppers on 1800 333 000 with any information. You can remain anonymous.
+                <span class="label notice">2h 56m 12s
+Recorded on 10/7/2011</span>
+            </div>
+        </div>
+	</div>
+    
+    
+    <div class="span12" id="search_results" style="display:none;">
+    	<div class="row">
+            <div class="span3">
+            	<a href="#">
+					<img class="thumbnail" src="images/thumb4.jpg" alt="">
+				</a>
+            </div>
+            
+            <div class="span9">
+           		<a href="#" class="video_link">Friday, 7 October 2011 at 11:13:02 AM</a><br/>
+                Police are hoping you can help by identifying this man and calling BankSA Crimestoppers on 1800 333 000 with any information. You can remain anonymous.
+                <span class="label notice">2h 56m 12s
+Recorded on 10/7/2011</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="span12" id="view_video" style="display:none;">
+    </div>
+</div>
+
+<div id="live_briefing" style="display:none;">
+	
+</div>

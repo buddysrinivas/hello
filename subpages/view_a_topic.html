@@ -1,0 +1,94 @@
+<script>
+var i = 2;
+$('.discussion_back').click(function() {
+	//alert('test');
+	$('#forum_content').show();
+	$('#topic_content').hide();
+});
+
+$('#submitbtn').click(function() {
+	i++;
+	var d = new Date();
+	var curr_hour = d.getHours();
+	var curr_min = d.getMinutes();
+	var regX = /\n/gi ;
+	var content = $('#reply_content').val();
+	content = content.replace(regX, "<br /> \n");
+	
+	$('#topic_table tr:last').after('<tr>'
+            +'<td><a href="#">Thang</a><p>Captain</p></td>'
+            +'<td><p><small><a href="#">#'+i+'</a> | Posted: Today, '+curr_hour+':'+curr_min+'</small></p><p>'+content+'</p></td>'
+         + '</tr>');
+	$('#reply_content').val("");
+});	
+</script>
+
+<ul class="breadcrumb">
+    <li><a href="#" class="discussion_back">Discussion Board</a> <span class="divider">/</span></li>
+    <li><a href="#" class="discussion_back">News & Assignments</a> <span class="divider">/</span></li>
+  </ul>
+  
+<h3>Fatal collision at Woodville</h3>  
+<table id="topic_table">
+	<tr>
+    	<td>
+       		<a href="#">Thang</a>
+            <p>
+            Captain
+            </p>
+        </td>
+        <td>
+        <p><small>
+       	<a href="#">#1</a> | Posted: Yesterday, 18:45 | Edited by: tkx211 
+        </small></p>
+        
+        <p>
+        One man has died and five people have been injured in a two-car collision at Woodville.<br/>
+ 
+
+At about 2.15am today a red Ford sedan and a silver Toyota sedan were travelling in opposite directions on Torrens Road, when they collided near the intersection of Torrens Road and Fletcher Street.<br/>
+
+Sadly, a 24-year-old man from Woodville North, who was a passenger in the Ford, died enroute to hospital.<br/>
+
+Five other people involved in the collision were taken to the QEH for treatment for minor injuries.<br/>
+
+A 42-year-old man from Woodville North has been arrested and charged with causing death by dangerous driving.<br/>
+
+He will appear in court at a later date.<br/>
+
+The man's death takes the state's road toll to 91, compared with 98 at the same time last year.
+        </p>
+        </td>
+	</tr>
+    
+    <tr>
+    	<td>
+       		<a href="#">Jaksha</a>
+            <p>
+            Sergeant
+            </p>
+        </td>
+        
+        <td>
+        <p><small>
+       	<a href="#">#2</a> | Posted: Yesterday, 19:45 | Edited by: tkx211 
+        </small></p>
+        
+        <p>Oh, this is really awful!</p>
+        </td>
+    </tr>
+</table>
+
+<ul class="breadcrumb">
+    <li><a href="#" class="discussion_back">Discussion Board</a> <span class="divider">/</span></li>
+    <li><a href="#" class="discussion_back">News & Assignments</a> <span class="divider">/</span></li>
+    <li class="active">Fatal collision at Woodville</li>
+  </ul>
+<h3>Your reply</h3>
+<form>
+	<fieldset>
+	<textarea rows="3" name="reply_content" id="reply_content" class="xxlarge"></textarea>
+    </fieldset>
+    
+    <a class="btn primary" href="#" id="submitbtn">Submit</a>
+</form>

@@ -1,0 +1,107 @@
+<script>
+var i = 1;
+jQuery(document).ready( function($) {
+	
+})
+
+$('#addbtn').click(function() {
+	i++;
+	$('#ideas_table tr:last').after('<tr>'
+            +'<td>'+i+'</td>'
+            +'<td>'+$('#name').val()+'</td>'
+            +'<td>'+$('#title').val()+'</td>'
+            +'<td>'+$('#content').val()+'</td>'
+         + '</tr>');
+	//clear all the fields
+	$('#name').val("");
+	$('#title').val("")	;
+	$('#content').val("");
+	$("#add_form").modal('hide');
+});
+
+$('#cancelbtn').click(function() {
+	$("#add_form").modal('hide');
+});
+</script>
+	<h1>Bright Ideas</h1>
+<button class="btn danger" data-keyboard="true" data-backdrop="true" data-controls-modal="add_form">Add new idea</button>
+
+<form name="input" action="index.html" method="get">
+<label for="title">Name</label>
+<!div class="input">
+<input id="name" class="xlarge" type="text" size="30" name="name">
+<p>
+<label for="title">Category</label>
+<!div class="input">
+<input id="title" class="xlarge" type="text" size="30" name="title">
+<p>
+<label for="content">Idea Proposal</label>
+<!div class="input">
+<textarea id="content" class="xlarge" rows="4" name="content"></textarea>
+
+<!/div>
+<input type="submit" value="Submit for Review" />
+</form>
+    <div id="add_form" class="modal hide fade">
+        <div class="modal-header">
+        <a class="close" href="#">×</a>
+        
+        
+        </div>
+        <div class="modal-body">
+        	<!-- The form goes here -->
+            <form>
+				<fieldset>
+                	<legend>Add new idea</legend>
+                    <div class="clearfix">
+                        <label for="title">Your name</label>
+                        <div class="input">
+                        <input id="name" class="xlarge" type="text" size="30" name="name">
+                        </div>
+                    </div>
+                    
+                    <div class="clearfix">
+                        <label for="title">Title</label>
+                        <div class="input">
+                        <input id="title" class="xlarge" type="text" size="30" name="title">
+                        </div>
+                    </div>
+                    
+                    <div class="clearfix">
+                        <label for="content">Idea Details</label>
+                        <div class="input">
+                        <textarea id="content" class="xlarge" rows="4" name="content"></textarea>
+                        <span class="help-block"> Describe your idea here </span>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>        
+        </div>
+        
+        <div class="modal-footer">
+        <a class="btn primary" href="#" id="addbtn">Add</a>
+        <a class="btn secondary" href="#" id="cancelbtn">Cancel</a>
+        </div>
+	</div>
+    
+    <!table id="ideas_table" class="zebra-striped">
+        <!thead>
+          <!tr>
+            <!th class="header">#</th>
+            <!th class="yellow header headerSortDown"><!Submitted by></th>
+            <!th class="blue header"><!Idea title></th>
+            <!th class="green header"><!Description></th>
+          <!/tr>
+        <!/thead>
+        <!tbody>
+          
+          
+          
+        <!tr>
+            <!td>1<!/td>
+            <!td><!Thang Nguyen><!/td>
+            <!td><!My super idea><!/td>
+            <td><!This idea can change the world></td>
+          <!/tr><!/tbody>
+      <!/table>
+	  
