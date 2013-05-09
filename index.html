@@ -18,7 +18,16 @@
         padding-top: 60px;
       }
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script type='text/javascript' src='//static.firebase.com/v0/firebase.js'></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+        <style type="text/css">
+                    html { height: 100% }
+            body { height: 100%;}
+            #map_canvas { height: 100% }
+        </style>
+   
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script>$(function () { prettyPrint() })</script>
     <script src="js/bootstrap-modal.js"></script>
@@ -88,6 +97,50 @@
 			});*/
 		})
 	</script>
+    <script type="text/javascript">
+            $(function() {
+                var currentMarker = null;
+                function initializeMap() {
+                    var div = $('#map_canvas')[0];
+                    var mapOptions = {
+                        center: new google.maps.LatLng(37.759665, -122.428764),
+                        zoom: 15,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+                    var map = new google.maps.Map(div, mapOptions);
+                    return map;
+                }
+                
+                function updateMap(map_data, map) {
+                    var latlng = new google.maps.LatLng(map_data.lat, map_data.lon);
+                    map.setCenter(latlng);
+                    if (currentMarker) {
+                        currentMarker.setPosition(latlng);
+                    } else {
+                        var marker_data = {
+                            map: map,
+                            position: latlng,
+                            title: "Lizzy is here"
+                        };
+                        currentMarker = new google.maps.Marker(marker_data);
+                    }
+                    var date = new Date(map_data.ts);
+                    $('#ts').text(date.toLocaleString());
+                }
+                var map = initializeMap();
+                /* TODO: Change this to your own firebase location. 
+                   Make sure it matches what you put in MainActivity.java  */
+                //new Firebase('https://trailblazer.firebaseio-demo.com/location/lizzy')
+              //  alert("I'm here");
+                new Firebase('https://ebasket.firebaseio.com/location/srini')
+                        .on('value', function(snap) {
+                    var map_data = snap.val();
+                    
+                    updateMap(map_data, map);
+                });
+                
+            });
+        </script>
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="images/favicon.ico">
@@ -96,7 +149,7 @@
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   </head>
 
-  <body>
+  <body onload=initializeMap()>
 
     <div class="topbar">
       <div class="fill">
@@ -104,7 +157,7 @@
           <a class="brand" href="#">Srinivasan Vembuli</a>
           <ul class="nav" data-tabs="tabs" >
             <li class="active"><a href="#home">Home</a></li>
-            <li><a href="#briefing">Team Briefing</a></li>
+            <li><a href="#briefing">Location Based Marketing</a></li>
             <li class="dropdown" data-dropdown="dropdown">
             	<a class="dropdown-toggle" href="#idea">Bright Ideas</a>
                 <ul class="dropdown-menu">
@@ -150,6 +203,9 @@
 
 
     </div> <!-- /container -->
-
+        <h1>Where's Srini?</h1>
+    
+        <h2>Last update: <span id="ts"></span></h2>
+        <div id="map_canvas"></div>
   </body>
 </html>
