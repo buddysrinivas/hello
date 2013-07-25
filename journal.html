@@ -44,10 +44,10 @@ $('#search_journal_link').click(function() {
 		//show the form now
 		
 		$('#search_form').show();
-		$('#search_link').html("&uarr;Search Journals");
+		$('#search_link').html("&uarr;Search Topic");
 	}else{
 		$('#search_form').hide();
-		$('#search_link').html("&darr;Search Journals");
+		$('#search_link').html("&darr;Search Topic");
 	}
 	state = 1-state;
 });
@@ -67,7 +67,7 @@ $('#search_journal_btn').click(function() {
 </script>
 
 <div class="page-header">
-          <h1>Journal <small>Supporting text or tagline</small>
+          <h1>Journal <small>Theory...</small>
           <p class="pull-right">
     
 </p>  
@@ -78,7 +78,7 @@ $('#search_journal_btn').click(function() {
         
  <div id="list_journal">       
  <h4>
- <a href="#" id="search_journal_link">&darr;Search Journals</a>
+ <a href="#" id="search_journal_link">&darr;Search Topics</a>
  </h3>
  <div id="search_form" class="hide">     
 <form>
@@ -145,9 +145,24 @@ $('#search_journal_btn').click(function() {
 </div>
 
 <p>
-<button class="btn danger" data-keyboard="true" data-backdrop="true" data-controls-modal="add_journal_form">Add new journal</button>
+<button class="btn danger" data-keyboard="true" data-backdrop="true" data-controls-modal="add_journal_form">Add new topic</button>
 </p>
+             <table class="bordered-table">
+                   <tr>
+                    <td><img src="images/influencers.png" width="560"/></td>
+                  </tr>
+              </table>
 
+             <table class="bordered-table">
+                   <tr>
+                    <td><img src="images/matrix.png" width="560"/></td> <td><img src="images/degree.png" width="400"/></td>
+                  </tr>
+              </table>
+            <table class="bordered-table">
+                   <tr>
+                    <td><img src="images/fbschema.png" width="890"/></td>
+                  </tr>
+              </table>
 
 	<table id="journals_table" class="zebra-striped">
         <thead>
@@ -166,7 +181,7 @@ $('#search_journal_btn').click(function() {
             <td>SA</td>
             <td>West Adelaide</td>
             <td>001</td>
-            <td><a href="#" class="journal_link">Suspicious theft in West Adelaide</a></td>
+            <td><a href="#" class="">Network Analysis</a></td>
           </tr>
           
         <tr>
@@ -174,31 +189,16 @@ $('#search_journal_btn').click(function() {
             <td>SA</td>
             <td>West Adelaide</td>
             <td>002</td>
-            <td><a href="#" class="journal_link">West Adelaide theft incident update</a></td>
+            <td><a href="#" class="">Graph Theory</a></td>
           </tr>  
-          
-        <tr>
+            
+
+		  <tr>
             <td>3</td>
             <td>SA</td>
             <td>West Adelaide</td>
-            <td>003</td>
-            <td><a href="#" class="journal_link">Attempt theft at West Adelaide</a></td>
-          </tr>
-          
-         <tr>
-            <td>4</td>
-            <td>SA</td>
-            <td>West Adelaide</td>
-            <td>004</td>
-            <td><a href="#" class="journal_link">Theft recovery at West Adelaide</a></td>
-          </tr>   
-
-		  <tr>
-            <td>5</td>
-            <td>SA</td>
-            <td>West Adelaide</td>
             <td>005</td>
-            <td><a href="#" class="journal_link">Theft at West Adelaide</a></td>
+            <td><a href="#" class="">GIS</a></td>
           </tr>   
       </tbody>
 </table>
@@ -214,8 +214,13 @@ $('#search_journal_btn').click(function() {
         	<!-- The form goes here -->
             <form>
 				<fieldset>
-                	<legend>Add new journal</legend>
-                    
+                	<legend>Add new Topic</legend>
+                    <table class="bordered-table">
+                   <tr> Your photo here :)
+                    <td><img src="images/paul.jpg" width="160"/></td>
+                  </tr>
+              </table>
+
                     <div class="clearfix">
                         <label for="title">City</label>
                         <div class="input">
@@ -237,7 +242,7 @@ $('#search_journal_btn').click(function() {
                     </div>
                     
                     <div class="clearfix">
-                        <label for="content">Journal content</label>
+                        <label for="content"> content</label>
                         <div class="input">
                         <textarea id="content" class="xlarge" rows="7" name="content"></textarea>
                         <span class="help-block"> Describe your idea here </span>
